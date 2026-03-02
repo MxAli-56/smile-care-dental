@@ -360,7 +360,7 @@
                             src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=1200"
                             alt="Modern Dental Clinic Interior"
                             class="w-full h-80 md:h-[500px] object-cover hover:scale-105 transition-transform duration-700"
-                            loading="lazy">
+                            loading="eager">
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                     </div>
@@ -502,60 +502,56 @@
 
     <!-- Facilities Section -->
     <section id="facilities" class="py-24 section-gradient">
-            <div class="container mx-auto px-4 md:px-8 lg:px-12">
-                  <div class="flex flex-col lg:flex-row items-center gap-16">
-                        <!-- Images -->
-                        <<div class="lg:w-1/2 relative">
-    <div class="grid grid-cols-2 gap-6">
-        <img
-            src="https://images.unsplash.com/photo-1629909605124-42595800e86b?auto=format&fit=crop&q=80&w=800"
-            alt="Modern Dental Equipment"               
-            class="rounded-3xl shadow-card w-full h-64 object-cover hover:scale-105 transition-transform duration-500"               
-            loading="lazy">
-        
-        <img
-            src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800"
-            alt="Comfortable Waiting Area"               
-            class="rounded-3xl shadow-card w-full h-64 object-cover mt-8 hover:scale-105 transition-transform duration-500"               
-            loading="lazy">
-    </div>
-
-    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-card w-3/4">
-        <div class="flex items-center space-x-3">
-            <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center">
-                <i data-lucide="award" class="w-6 h-6 text-white"></i>
-            </div>
-            <div>
-                <p class="font-bold text-dark">Award Winning Clinic</p>
-                <p class="text-sm text-light">Best Dental Care 2026</p> </div>
-        </div>
-    </div>
-</div>
-                                          <div>
-                                                <p class="font-bold text-dark">Award Winning Clinic</p>
-                                                <p class="text-sm text-light">Best Dental Care 2023</p>
-                                              </div>
-                                        </div>
-                                  </div>
+        <div class="container mx-auto px-4 md:px-8 lg:px-12">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+    
+                <div class="lg:w-1/2 relative">
+                    <div class="grid grid-cols-2 gap-4 md:gap-6">
+                        <div class="rounded-3xl shadow-card overflow-hidden h-64 border border-gray-100">
+                            <img src="https://images.unsplash.com/photo-1629909605124-42595800e86b?auto=format&fit=crop&q=80&w=800"
+                                alt="Modern Dental Equipment"
+                                class="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
+                                loading="eager">
+                        </div>
+    
+                        <div class="rounded-3xl shadow-card overflow-hidden h-64 border border-gray-100 mt-8">
+                            <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800"
+                                alt="Comfortable Waiting Area"
+                                class="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
+                                loading="eager">
+                        </div>
+                    </div>
+    
+                    <div
+                        class="absolute -bottom-6 left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 bg-white p-5 rounded-2xl shadow-xl border border-gray-100 w-5/6 md:w-3/4 z-10">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="award" class="w-6 h-6 text-white"></i>
                             </div>
-                       
-                        <!-- Facilities List -->
-                        <div class="lg:w-1/2">
-                              <div class="space-y-4">
-                                    <span
-                            class="inline-block bg-primary/10 text-primary font-semibold px-4 py-2 rounded-full mb-2">Our
-                            Facilities</span>
-                                    <h2 class="font-display font-black text-3xl md:text-4xl mb-8">Modern
-                            Patient-Centric Facilities</h2>
-                                   
-                                    <div class="space-y-6" id="amenities-list">
-                                          <!-- Amenities will be loaded by JavaScript -->
-                                        </div>
-                                  </div>
+                            <div>
+                                <p class="font-bold text-slate-800 text-sm md:text-base">Award Winning Clinic</p>
+                                <p class="text-xs text-slate-500">Best Patient Care 2026</p>
                             </div>
-                      </div>
+                        </div>
+                    </div>
                 </div>
-          </section>
+    
+                <div class="lg:w-1/2">
+                    <div class="space-y-4">
+                        <span class="inline-block bg-primary/10 text-primary font-semibold px-4 py-2 rounded-full mb-2">
+                            Our Facilities
+                        </span>
+                        <h2 class="font-display font-black text-3xl md:text-4xl mb-8">
+                            Modern Patient-Centric Facilities
+                        </h2>
+    
+                        <div class="space-y-6" id="amenities-list"></div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </section>
 
     <!-- Location Section -->
     <section id="location" class="py-24 bg-white">
