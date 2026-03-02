@@ -10,7 +10,11 @@ const CLINIC_DATA = {
       icon: "sparkles",
       imageUrl:
         "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=600",
-      features: ["Painless Procedure", "Advanced Technology", "30 Minutes Session"],
+      features: [
+        "Painless Procedure",
+        "Advanced Technology",
+        "30 Minutes Session",
+      ],
     },
     {
       id: "extraction",
@@ -32,7 +36,11 @@ const CLINIC_DATA = {
       icon: "align-center",
       imageUrl:
         "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&q=80&w=600",
-      features: ["Free Consultation", "Installment Plans", "Regular Adjustments"],
+      features: [
+        "Free Consultation",
+        "Installment Plans",
+        "Regular Adjustments",
+      ],
     },
     {
       id: "whitening",
@@ -42,7 +50,7 @@ const CLINIC_DATA = {
       priceRange: "PKR 8,000 - 15,000",
       icon: "sun",
       imageUrl:
-        "https://images.unsplash.com/photo-1622206151226-18a236e9cd20?auto=format&fit=crop&q=80&w=600",
+        "https://images.unsplash.com/photo-1606811919082-70981ad76a0d?q=80&w=800&auto=format&fit=crop",
       features: ["Instant Results", "Safe Process", "Long Lasting"],
     },
     {
@@ -52,7 +60,7 @@ const CLINIC_DATA = {
       priceRange: "PKR 50,000",
       icon: "anchor",
       imageUrl:
-        "https://images.unsplash.com/photo-1582719478250-cc0c16a4ba9b?auto=format&fit=crop&q=80&w=600",
+        "https://images.unsplash.com/photo-1609840112855-9ab5ad8f67e4?q=80&w=800&auto=format&fit=crop",
       features: ["Titanium Implants", "3D Planning", "Long-Term Stability"],
     },
     {
@@ -63,7 +71,7 @@ const CLINIC_DATA = {
       priceRange: "PKR 7,000 - 12,000",
       icon: "droplet",
       imageUrl:
-        "https://images.unsplash.com/photo-1588776813677-77aaf5595a1a?auto=format&fit=crop&q=80&w=600",
+        "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?q=80&w=800&auto=format&fit=crop",
       features: ["Pain-Free", "Single Visit", "Microscopic Precision"],
     },
   ],
