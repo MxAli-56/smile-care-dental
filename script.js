@@ -52,7 +52,7 @@ const CLINIC_DATA = {
       priceRange: "PKR 50,000",
       icon: "anchor",
       imageUrl:
-        "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=600",
+        "https://images.unsplash.com/photo-1582719478250-cc0c16a4ba9b?auto=format&fit=crop&q=80&w=600",
       features: ["Titanium Implants", "3D Planning", "Long-Term Stability"],
     },
     {
