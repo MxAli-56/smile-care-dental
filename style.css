@@ -1,0 +1,319 @@
+/* Additional Custom Styles */
+
+
+
+/* Custom Scrollbar */
+
+::-webkit-scrollbar {
+
+    width: 10px;
+
+}
+
+
+
+::-webkit-scrollbar-track {
+
+    background: #f1f5f9;
+
+}
+
+
+
+::-webkit-scrollbar-thumb {
+
+    background: #0ea5e9;
+
+    border-radius: 5px;
+
+}
+
+
+
+::-webkit-scrollbar-thumb:hover {
+
+    background: #0284c7;
+
+}
+
+
+
+/* Print Styles */
+
+@media print {
+
+    .no-print {
+
+        display: none !important;
+
+    }
+
+}
+
+
+
+/* Reduced Motion */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+
+    *::before,
+
+    *::after {
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+
+    }
+
+}
+
+
+
+/* High Contrast Mode */
+
+@media (prefers-contrast: high) {
+
+    body {
+
+        color: #000;
+
+    }
+
+   
+
+    .btn-gradient {
+
+        border: 2px solid #000;
+
+    }
+
+}
+
+
+
+/* Dark Mode Support */
+
+@media (prefers-color-scheme: dark) {
+
+    body {
+
+        background-color: #0f172a;
+
+        color: #f8fafc;
+
+    }
+
+   
+
+    .bg-white {
+
+        background-color: #1e293b !important;
+
+    }
+
+   
+
+    .text-dark {
+
+        color: #f8fafc !important;
+
+    }
+
+   
+
+    .text-light {
+
+        color: #94a3b8 !important;
+
+    }
+
+   
+
+    .border-gray-100 {
+
+        border-color: #334155 !important;
+
+    }
+
+   
+
+    .shadow-card {
+
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3) !important;
+
+    }
+
+}
+
+
+
+/* Loading States */
+
+.loading-skeleton {
+
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+
+    background-size: 200% 100%;
+
+    animation: loading 1.5s infinite;
+
+}
+
+
+
+@keyframes loading {
+
+    0% { background-position: 200% 0; }
+
+    100% { background-position: -200% 0; }
+
+}
+
+
+
+/* Focus Styles for Accessibility */
+
+*:focus {
+
+    outline: 2px solid #0ea5e9;
+
+    outline-offset: 2px;
+
+}
+
+
+
+*:focus:not(:focus-visible) {
+
+    outline: none;
+
+}
+
+
+
+*:focus-visible {
+
+    outline: 2px solid #0ea5e9;
+
+    outline-offset: 2px;
+
+}
+
+
+
+/* Selection Styles */
+
+::selection {
+
+    background-color: rgba(14, 165, 233, 0.3);
+
+    color: #0f172a;
+
+}
+
+
+
+/* Image Optimization */
+
+img {
+
+    max-width: 100%;
+
+    height: auto;
+
+    vertical-align: middle;
+
+    font-style: italic;
+
+    background-repeat: no-repeat;
+
+    background-size: cover;
+
+    shape-margin: 0.75rem;
+
+}
+
+
+
+/* Responsive Typography */
+
+@media (max-width: 640px) {
+
+    html {
+
+        font-size: 14px;
+
+    }
+
+   
+
+    h1 {
+
+        font-size: 2.25rem !important;
+
+    }
+
+   
+
+    h2 {
+
+        font-size: 1.875rem !important;
+
+    }
+
+}
+
+
+
+/* Touch Device Optimizations */
+
+@media (hover: none) and (pointer: coarse) {
+
+    .card-hover:hover {
+
+        transform: none !important;
+
+    }
+
+   
+
+    button,
+
+    a {
+
+        min-height: 44px;
+
+        min-width: 44px;
+
+    }
+
+}
+
+
+
+/* Performance Optimizations */
+
+.will-change-transform {
+
+    will-change: transform;
+
+}
+
+
+
+/* Container Queries Support */
+
+@container (min-width: 400px) {
+
+    .container-query-demo {
+
+        font-size: 1.25rem;
+
+    }
+
+}

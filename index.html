@@ -2,427 +2,923 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Smile Care Dental Clinic | Karachi</title>
-
+       
+    <meta charset="UTF-8">
+       
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Smile Care Dental Clinic | Premium Dentistry in Karachi</title>
+       
+    <meta name="description"
+        content="Karachi's premier dental clinic offering expert dental care with 24/7 generator backup, valet parking, and modern sedation dentistry.">
+       
+    <meta name="keywords"
+        content="dentist Karachi, dental clinic, emergency dental, teeth whitening, braces, dental implants">
+       
+        <!-- Tailwind CSS -->
+       
     <script src="https://cdn.tailwindcss.com"></script>
+       
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        pearl: '#F8FBFC',
-                        medical: '#4A90A4',
-                        navy: '#1E3A5F',
+                        'primary': '#0EA5E9',      // Bright cyan blue
+                        'primary-dark': '#0284C7',
+                        'secondary': '#1E40AF',     // Deep blue
+                        'accent': '#10B981',       // Emerald green
+                        'neutral': '#F8FAFC',      // Light background
+                        'dark': '#1E293B',         // Dark text
+                        'light': '#64748B',        // Light text
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        'sans': ['Poppins', 'system-ui', 'sans-serif'],
+                        'display': ['Montserrat', 'sans-serif'],
                     },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    },
+                    boxShadow: {
+                        'card': '0 10px 40px rgba(0, 0, 0, 0.08)',
+                        'card-hover': '0 20px 60px rgba(14, 165, 233, 0.15)',
+                        'deep': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                    }
                 }
             }
         }
     </script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+       
+        <!-- Google Fonts -->
+       
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap"
         rel="stylesheet">
-
-    <style>
-        body {
-            scroll-behavior: smooth;
-            font-family: 'Inter', sans-serif;
-        }
-
+       
+        <!-- Lucide Icons -->
+       
+    <script src="https://unpkg.com/lucide@latest"></script>
+       
+        <!-- Custom Styles -->
+        <style>
         html {
             scroll-behavior: smooth;
         }
 
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 8px;
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
         }
 
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: #F8FBFC;
+        .hero-gradient {
+            background: linear-gradient(135deg, #F0F9FF 0%, #FFFFFF 100%);
         }
 
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #4A90A4;
-            border-radius: 10px;
+        .section-gradient {
+            background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
         }
 
-        @keyframes fade-in {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
+        .nav-blur {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+        }
+
+        .stagger-animation>* {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .stagger-animation>*:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .stagger-animation>*:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .stagger-animation>*:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .stagger-animation>*:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .stagger-animation>*:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
             }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-fade-in {
-            animation: fade-in 1s ease-out forwards;
-        }
-
-        @keyframes bounce-subtle {
-
-            0%,
             100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px);
+                transform: translateX(100%);
             }
         }
 
-        .animate-bounce-subtle {
-            animation: bounce-subtle 3s ease-in-out infinite;
+        .shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shimmer::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        .stat-number {
+            background: linear-gradient(135deg, #0EA5E9, #1E40AF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .testimonial-bg {
+            background: linear-gradient(135deg, #0EA5E9 0%, #1E40AF 100%);
+        }
+
+        .btn-gradient {
+            background: linear-gradient(135deg, #0EA5E9 0%, #1E40AF 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-gradient:hover {
+            background: linear-gradient(135deg, #0284C7 0%, #1E3B8A 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(14, 165, 233, 0.3);
+        }
+
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
         }
     </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0ea5e9',
+                        'primary-dark': '#0284c7',
+                        dark: '#0f172a',
+                        light: '#64748b',
+                        neutral: '#f8fafc',
+                    },
+                    boxShadow: {
+                        'card': '0 10px 40px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 
-<body class="bg-pearl text-navy antialiased custom-scrollbar">
+<body class="bg-neutral text-dark">
+        <!-- Navigation -->
+        <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 py-5 transition-all duration-300 nav-blur bg-white/90">
+                <div class="container mx-auto px-4 md:px-8 lg:px-12">
+                        <div class="flex justify-between items-center">
+                                <!-- Logo -->
+                                <div class="flex items-center space-x-3">
+                                        <div class="bg-primary p-3 rounded-2xl shadow-card">
+                                                <i data-lucide="tooth" class="w-6 h-6 text-white"></i>
+                                            </div>
+                                        <div>
+                                                <span
+                            class="font-display font-black text-2xl tracking-tight text-secondary">Smile Care</span>
+                                                <span
+                            class="block font-display font-bold text-lg tracking-tight text-primary">Dental
+                            Clinic</span>
+                                            </div>
+                                    </div>
+                               
+                                <!-- Desktop Navigation -->
+                                <div class="hidden lg:flex items-center space-x-10">
+                                        <a href="#home"
+                        class="font-semibold text-dark hover:text-primary transition-colors relative group">
+                                                Home
+                                                <span
+                            class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                                            </a>
+                                        <a href="#services"
+                        class="font-semibold text-dark hover:text-primary transition-colors relative group">
+                                                Services
+                                                <span
+                            class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                                            </a>
+                                        <a href="#team"
+                        class="font-semibold text-dark hover:text-primary transition-colors relative group">
+                                                Team
+                                                <span
+                            class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                                            </a>
+                                        <a href="#facilities"
+                        class="font-semibold text-dark hover:text-primary transition-colors relative group">
+                                                Facilities
+                                                <span
+                            class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                                            </a>
+                                        <a href="#location"
+                        class="font-semibold text-dark hover:text-primary transition-colors relative group">
+                                                Location
+                                                <span
+                            class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                                            </a>
+                                        <a href="#contact"
+                        class="btn-gradient text-white font-semibold px-8 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all">
+                                                Book Appointment
+                                            </a>
+                                    </div>
+                               
+                                <!-- Mobile Menu Button -->
+                                <button id="mobile-menu-btn" class="lg:hidden text-dark">
+                                        <i data-lucide="menu" class="w-8 h-8"></i>
+                                    </button>
+                            </div>
+                    </div>
+            </nav>
 
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-transparent py-6">
-        <div class="container mx-auto px-4 md:px-8 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <div class="bg-medical p-2.5 rounded-xl text-white shadow-lg">
-                    <i class="fas fa-tooth text-xl"></i>
-                </div>
-                <span class="font-bold text-2xl tracking-tight text-navy">Smile Care <span
-                        class="text-medical">Dental</span></span>
-            </div>
-            <div class="hidden md:flex items-center space-x-10 font-bold text-navy/70">
-                <a href="#services" class="hover:text-medical transition-colors">Services</a>
-                <a href="#team" class="hover:text-medical transition-colors">Team</a>
-                <a href="#location" class="hover:text-medical transition-colors">Location</a>
-                <a href="#contact"
-                    class="bg-navy text-white px-7 py-2.5 rounded-full hover:bg-medical transition-all shadow-lg shadow-navy/10">Book
-                    Now</a>
-            </div>
-            <button class="md:hidden text-navy text-2xl"><i class="fas fa-bars"></i></button>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu fixed inset-y-0 right-0 w-64 bg-white shadow-deep z-50 lg:hidden">
+                <div class="flex justify-between items-center p-6 border-b">
+                        <span class="font-display font-bold text-xl text-secondary">Menu</span>
+                        <button id="close-menu">
+                                <i data-lucide="x" class="w-6 h-6"></i>
+                            </button>
+                    </div>
+                <div class="p-6 space-y-6">
+                        <a href="#home"
+                class="block font-semibold text-dark hover:text-primary transition-colors">Home</a>
+                        <a href="#services"
+                class="block font-semibold text-dark hover:text-primary transition-colors">Services</a>
+                        <a href="#team"
+                class="block font-semibold text-dark hover:text-primary transition-colors">Team</a>
+                        <a href="#facilities"
+                class="block font-semibold text-dark hover:text-primary transition-colors">Facilities</a>
+                        <a href="#location"
+                class="block font-semibold text-dark hover:text-primary transition-colors">Location</a>
+                        <a href="#contact"
+                class="block btn-gradient text-white font-semibold px-6 py-3 rounded-xl text-center">Book
+                Appointment</a>
+                    </div>
+            </div>
+
+        <!-- Hero Section -->
+        <section id="home" class="pt-24 pb-20 md:pt-32 md:pb-28 hero-gradient relative overflow-hidden">
+                <div
+            class="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-br from-primary/10 to-accent/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl">
         </div>
-    </nav>
-
-    <section class="relative pt-24 pb-24 md:pt-32 md:pb-40 overflow-hidden bg-pearl">
-        <div class="container mx-auto px-4 md:px-8 relative z-10">
-            <div class="flex flex-col lg:flex-row items-center gap-16">
-                <div class="lg:w-1/2 space-y-10 animate-fade-in">
-                    <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold text-navy leading-tight">Experience
-                        World-Class Dentistry in the Heart of Karachi</h1>
-                    <p class="text-lg md:text-xl text-navy/60 max-w-xl leading-relaxed font-medium">From wedding-ready
-                        smiles to emergency pain relief, we provide expert dental care with 24/7 generator backup and
-                        valet parking.</p>
-                    <div class="flex flex-wrap gap-6">
-                        <div
-                            class="flex items-center space-x-4 bg-white p-5 rounded-2xl shadow-sm border border-medical/5 group hover:border-medical/20 transition-all">
-                            <div
-                                class="bg-medical/10 p-3 rounded-xl text-medical group-hover:bg-medical group-hover:text-white">
-                                <i class="fas fa-bolt"></i>
-                            </div>
-                            <div>
-                                <p
-                                    class="text-[10px] font-black text-navy/30 uppercase tracking-widest leading-none mb-1">
-                                    Power</p>
-                                <p class="text-sm font-bold text-navy">Generator Backup</p>
-                            </div>
-                        </div>
-                        <div
-                            class="flex items-center space-x-4 bg-white p-5 rounded-2xl shadow-sm border border-medical/5 group hover:border-medical/20 transition-all">
-                            <div
-                                class="bg-medical/10 p-3 rounded-xl text-medical group-hover:bg-medical group-hover:text-white">
-                                <i class="fas fa-car"></i>
-                            </div>
-                            <div>
-                                <p
-                                    class="text-[10px] font-black text-navy/30 uppercase tracking-widest leading-none mb-1">
-                                    Service</p>
-                                <p class="text-sm font-bold text-navy">Valet Parking</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:w-1/2 relative">
-                    <div class="relative rounded-[3rem] overflow-hidden shadow-2xl border-[12px] border-white">
-                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=1200"
-                            alt="Clinic" class="w-full h-auto aspect-[4/3] object-cover" />
-                    </div>
-                    <div
-                        class="absolute -bottom-8 -right-8 bg-white p-6 rounded-3xl shadow-2xl max-w-[280px] border border-medical/10 animate-bounce-subtle">
-                        <p class="text-xs text-navy font-semibold italic">"The most professional dental care in Karachi,
-                            without electricity worries!"</p>
-                    </div>
-                </div>
-            </div>
+                <div
+            class="absolute bottom-0 left-0 w-1/3 h-1/3 bg-gradient-to-tr from-secondary/10 to-primary/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl">
         </div>
-    </section>
+               
+                <div class="container mx-auto px-4 md:px-8 lg:px-12 relative z-10">
+                        <div class="flex flex-col lg:flex-row items-center gap-16">
+                                <!-- Left Content -->
+                                <div class="lg:w-1/2 space-y-10 stagger-animation">
+                                        <div class="space-y-6">
+                                                <span
+                            class="inline-block bg-primary/10 text-primary font-semibold px-4 py-2 rounded-full">Karachi's
+                            #1 Dental Clinic</span>
+                                                <h1
+                            class="font-display font-black text-4xl md:text-5xl lg:text-6xl leading-tight">
+                                                        Experience World-Class
+                                                        <span class="text-primary">Dental Care</span>
+                                                        in Karachi
+                                                    </h1>
+                                                <p class="text-lg text-light leading-relaxed max-w-xl">
+                                                        From wedding-ready smiles to emergency pain relief, we provide
+                            expert dental care with 24/7 generator backup and valet parking. Your comfort is our
+                            priority.
+                                                    </p>
+                                            </div>
+                                       
+                                        <!-- Key Features -->
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                                <div
+                            class="bg-white p-6 rounded-2xl shadow-card card-hover border border-gray-100">
+                                                        <div class="flex items-center space-x-4">
+                                                                <div class="bg-primary/10 p-3 rounded-xl">
+                                                                        <i data-lucide="zap"
+                                        class="w-6 h-6 text-primary"></i>
+                                                                    </div>
+                                                                <div>
+                                                                        <p
+                                        class="text-xs font-bold text-light uppercase tracking-wider">Power</p>
+                                                                        <p class="font-bold text-dark">24/7 Generator
+                                        Backup</p>
+                                                                    </div>
+                                                            </div>
+                                                    </div>
+                                                <div
+                            class="bg-white p-6 rounded-2xl shadow-card card-hover border border-gray-100">
+                                                        <div class="flex items-center space-x-4">
+                                                                <div class="bg-accent/10 p-3 rounded-xl">
+                                                                        <i data-lucide="car"
+                                        class="w-6 h-6 text-accent"></i>
+                                                                    </div>
+                                                                <div>
+                                                                        <p
+                                        class="text-xs font-bold text-light uppercase tracking-wider">Service</p>
+                                                                        <p class="font-bold text-dark">Valet Parking</p>
+                                                                    </div>
+                                                            </div>
+                                                    </div>
+                                            </div>
+                                       
+                                        <!-- CTA Buttons -->
+                                        <div class="flex flex-wrap gap-4">
+                                                <a href="#contact"
+                            class="btn-gradient text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all">
+                                                        Book Free Consultation
+                                                    </a>
+                                                <a href="tel:+922134XXXXXX"
+                            class="bg-white text-dark font-semibold px-8 py-4 rounded-xl shadow-card border border-gray-200 hover:border-primary transition-all flex items-center space-x-3">
+                                                        <i data-lucide="phone" class="w-5 h-5"></i>
+                                                        <span>021-34XXXXXX</span>
+                                                    </a>
+                                            </div>
+                                    </div>
+                               
+                                <!-- Right Image -->
+                                <div class="lg:w-1/2 relative">
+                                        <div class="relative rounded-[2.5rem] overflow-hidden shadow-deep">
+                                                <img
+                            src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=1200"
+                                                        alt="Modern Dental Clinic Interior"                            
+                            class="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-700"    
+                                                    loading="lazy">
+                                                <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                                            </div>
+                                       
+                                        <!-- Floating Testimonial -->
+                                        <div
+                        class="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-deep max-w-xs animate-fade-in-up">
+                                                <div class="flex items-center space-x-3 mb-3">
+                                                        <div
+                                class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                                                                <i data-lucide="star" class="w-5 h-5 text-primary"></i>
+                                                            </div>
+                                                        <div>
+                                                                <p class="font-bold text-dark">"Most Professional Care"
+                                </p>
+                                                                <p class="text-xs text-light">⭐⭐⭐⭐⭐</p>
+                                                            </div>
+                                                    </div>
+                                                <p class="text-sm text-dark italic">"The most professional dental care
+                            in Karachi, without electricity worries!"</p>
+                                            </div>
+                                    </div>
+                            </div>
+                    </div>
+            </section>
 
-    <section class="bg-navy py-16">
-        <div class="container mx-auto px-4 md:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
-                <div class="flex items-center space-x-6 justify-center md:justify-start">
-                    <i class="fas fa-clock text-medical text-3xl"></i>
-                    <div class="text-white">
-                        <p class="font-extrabold text-lg">Prompt Response</p>
-                        <p class="text-white/40 text-sm">Emergency care ready 24/7</p>
-                    </div>
-                </div>
-                <div class="flex items-center space-x-6 justify-center md:justify-start">
-                    <i class="fas fa-shield-virus text-medical text-3xl"></i>
-                    <div class="text-white">
-                        <p class="font-extrabold text-lg">Elite Sterilization</p>
-                        <p class="text-white/40 text-sm">WHO clinical protocols</p>
-                    </div>
-                </div>
-                <div class="flex items-center space-x-6 justify-center md:justify-start">
-                    <i class="fas fa-heart-pulse text-medical text-3xl"></i>
-                    <div class="text-white">
-                        <p class="font-extrabold text-lg">Pain-Free Tech</p>
-                        <p class="text-white/40 text-sm">Modern sedation dentistry</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        <!-- Stats Bar -->
+        <section class="bg-white py-8 border-y border-gray-100">
+                <div class="container mx-auto px-4 md:px-8 lg:px-12">
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                                <div class="space-y-2">
+                                        <p class="stat-number font-display font-black text-3xl">5000+</p>
+                                        <p class="text-sm font-semibold text-light uppercase tracking-wider">Happy
+                        Patients</p>
+                                    </div>
+                                <div class="space-y-2">
+                                        <p class="stat-number font-display font-black text-3xl">24/7</p>
+                                        <p class="text-sm font-semibold text-light uppercase tracking-wider">Emergency
+                        Care</p>
+                                    </div>
+                                <div class="space-y-2">
+                                        <p class="stat-number font-display font-black text-3xl">98%</p>
+                                        <p class="text-sm font-semibold text-light uppercase tracking-wider">Success
+                        Rate</p>
+                                    </div>
+                                <div class="space-y-2">
+                                        <p class="stat-number font-display font-black text-3xl">15+</p>
+                                        <p class="text-sm font-semibold text-light uppercase tracking-wider">Years
+                        Experience</p>
+                                    </div>
+                            </div>
+                    </div>
+            </section>
 
-    <section id="services" class="py-32 bg-white scroll-mt-20">
-        <div class="container mx-auto px-4 md:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-20">
-                <h2 class="text-medical font-black uppercase tracking-widest text-xs mb-4">Treatment Expertise</h2>
-                <h3 class="text-3xl md:text-5xl font-extrabold text-navy mb-6">Premium Care for Every Smile</h3>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10" id="services-grid">
-            </div>
-        </div>
-    </section>
+        <!-- Features Section -->
+        <section class="py-20 bg-white">
+                <div class="container mx-auto px-4 md:px-8 lg:px-12">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                <div class="bg-neutral p-8 rounded-3xl card-hover border border-gray-100">
+                                        <div
+                        class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
+                                                <i data-lucide="clock" class="w-7 h-7 text-primary"></i>
+                                            </div>
+                                        <h3 class="font-display font-bold text-xl mb-3">Emergency Care Ready 24/7</h3>
+                                        <p class="text-light">Immediate dental care available round the clock for urgent
+                        situations.</p>
+                                    </div>
+                                <div class="bg-neutral p-8 rounded-3xl card-hover border border-gray-100">
+                                        <div
+                        class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mb-6">
+                                                <i data-lucide="shield-check" class="w-7 h-7 text-accent"></i>
+                                            </div>
+                                        <h3 class="font-display font-bold text-xl mb-3">WHO Clinical Protocols</h3>
+                                        <p class="text-light">Highest sterilization standards following international
+                        health guidelines.</p>
+                                    </div>
+                                <div class="bg-neutral p-8 rounded-3xl card-hover border border-gray-100">
+                                        <div
+                        class="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6">
+                                                <i data-lucide="heart-pulse" class="w-7 h-7 text-secondary"></i>
+                                            </div>
+                                        <h3 class="font-display font-bold text-xl mb-3">Modern Sedation Dentistry</h3>
+                                        <p class="text-light">Pain-free treatments using latest sedation and anesthesia
+                        techniques.</p>
+                                    </div>
+                            </div>
+                    </div>
+            </section>
 
-    <section id="team" class="py-32 bg-pearl scroll-mt-20">
-        <div class="container mx-auto px-4 md:px-8">
-            <h3 class="text-3xl md:text-5xl font-extrabold text-navy mb-20 text-center">Meet our Specialists</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" id="team-grid">
-            </div>
-        </div>
-    </section>
+        <!-- Services Section -->
+        <section id="services" class="py-20 section-gradient">
+                <div class="container mx-auto px-4 md:px-8 lg:px-12">
+                        <div class="text-center max-w-2xl mx-auto mb-16">
+                                <span
+                    class="inline-block bg-primary/10 text-primary font-semibold px-4 py-2 rounded-full mb-4">Our
+                    Expertise</span>
+                                <h2 class="font-display font-black text-3xl md:text-4xl mb-6">Premium Dental Services
+                </h2>
+                                <p class="text-light">Comprehensive dental care using state-of-the-art technology and
+                    techniques.</p>
+                            </div>
+                       
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="services-grid">
+                                <!-- Services will be loaded by JavaScript -->
+                            </div>
+                    </div>
+            </section>
 
-    <section id="amenities" class="py-32 bg-white scroll-mt-20">
-        <div class="container mx-auto px-4 md:px-8">
-            <div class="flex flex-col lg:flex-row items-center gap-24">
-                <div class="lg:w-1/2 relative grid grid-cols-2 gap-6">
-                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=400"
-                        class="rounded-[2.5rem] shadow-xl mt-12" alt="Clinic" />
-                    <img src="https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&q=80&w=400"
-                        class="rounded-[2rem] shadow-lg" alt="Clinic" />
-                </div>
-                <div class="lg:w-1/2">
-                    <h3 class="text-3xl md:text-5xl font-extrabold text-navy mb-10">Modern Facilities</h3>
-                    <div class="space-y-6" id="amenities-list">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        <!-- Team Section -->
+        <section id="team" class="py-20 bg-white">
+                <div class="container mx-auto px-4 md:px-8 lg:px-12">
+                        <div class="text-center max-w-2xl mx-auto mb-16">
+                                <span
+                    class="inline-block bg-primary/10 text-primary font-semibold px-4 py-2 rounded-full mb-4">Our
+                    Experts</span>
+                                <h2 class="font-display font-black text-3xl md:text-4xl mb-6">Meet Our Specialists</h2>
+                                <p class="text-light">Highly qualified dental professionals dedicated to your oral
+                    health.</p>
+                            </div>
+                       
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" id="team-grid">
+                                <!-- Team will be loaded by JavaScript -->
+                            </div>
+                    </div>
+            </section>
 
-    <section id="location" class="py-32 bg-navy text-white scroll-mt-20">
-        <div class="container mx-auto px-4 md:px-8 text-center lg:text-left">
-            <div class="flex flex-col lg:flex-row items-center gap-20">
-                <div class="lg:w-1/2">
-                    <h2 class="text-4xl md:text-6xl font-extrabold mb-10">Visit us in Gulshan</h2>
-                    <p class="text-white/60 text-lg mb-12">Gulshan-e-Iqbal, Block 10, Karachi</p>
-                    <div class="space-y-4 mb-12" id="landmarks-list">
-                    </div>
-                    <button onclick="openGoogleMaps()"
-                        class="bg-medical text-white font-black px-10 py-5 rounded-2xl shadow-xl hover:bg-white hover:text-navy transition-all">Open
-                        in Google Maps</button>
-                </div>
-                <div
-                    class="lg:w-1/2 w-full h-[400px] bg-white/5 rounded-[4rem] flex items-center justify-center border border-white/10">
-                    <div class="bg-white p-8 rounded-3xl text-navy flex flex-col items-center space-y-4 shadow-2xl">
-                        <i class="fas fa-tooth text-medical text-4xl"></i>
-                        <span class="font-black text-2xl tracking-tighter">Smile Care Dental</span>
-                        <span class="text-[10px] font-black uppercase text-navy/30 tracking-[0.3em]">Gulshan Block
-                            10</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        <!-- Facilities Section -->
+        <section id="facilities" class="py-20 section-gradient">
+                <div class="container mx-auto px-4 md:px-8 lg:px-12">
+                        <div class="flex flex-col lg:flex-row items-center gap-16">
+                                <!-- Images -->
+                                <div class="lg:w-1/2 relative">
+                                        <div class="grid grid-cols-2 gap-6">
+                                                <img
+                            src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=600"
+                                                        alt="Modern Dental Equipment"                            
+                            class="rounded-3xl shadow-card w-full h-64 object-cover"                            
+                            loading="lazy">
+                                                <img
+                            src="https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&q=80&w=600"
+                                                        alt="Comfortable Waiting Area"                            
+                            class="rounded-3xl shadow-card w-full h-64 object-cover mt-8"                            
+                            loading="lazy">
+                                            </div>
+                                        <div
+                        class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-card w-3/4">
+                                                <div class="flex items-center space-x-3">
+                                                        <div
+                                class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center">
+                                                                <i data-lucide="award" class="w-6 h-6 text-white"></i>
+                                                            </div>
+                                                        <div>
+                                                                <p class="font-bold text-dark">Award Winning Clinic</p>
+                                                                <p class="text-sm text-light">Best Dental Care 2023</p>
+                                                            </div>
+                                                    </div>
+                                            </div>
+                                    </div>
+                               
+                                <!-- Facilities List -->
+                                <div class="lg:w-1/2">
+                                        <div class="space-y-4">
+                                                <span
+                            class="inline-block bg-primary/10 text-primary font-semibold px-4 py-2 rounded-full mb-2">Our
+                            Facilities</span>
+                                                <h2 class="font-display font-black text-3xl md:text-4xl mb-8">Modern
+                            Patient-Centric Facilities</h2>
+                                               
+                                                <div class="space-y-6" id="amenities-list">
+                                                        <!-- Amenities will be loaded by JavaScript -->
+                                                    </div>
+                                            </div>
+                                    </div>
+                            </div>
+                    </div>
+            </section>
 
-    <section id="contact" class="py-32 bg-white scroll-mt-20">
-        <div class="container mx-auto px-4 md:px-8">
-            <div
-                class="max-w-6xl mx-auto bg-pearl rounded-[4rem] p-10 md:p-20 border border-medical/10 flex flex-col lg:flex-row items-center gap-20 shadow-xl shadow-medical/5">
-                <div class="lg:w-1/2 space-y-8 text-center lg:text-left">
-                    <h2 class="text-4xl md:text-6xl font-extrabold text-navy leading-tight">Ready for your visit?</h2>
-                    <p class="text-navy/60 text-lg md:text-xl font-medium leading-relaxed">Book a consultation or talk
-                        to our AI assistant to learn more about our services.</p>
-                    <div class="pt-6 flex flex-wrap justify-center lg:justify-start gap-6">
-                        <a href="tel:+922134XXXXXX"
-                            class="bg-navy text-white px-10 py-5 rounded-2xl font-bold text-lg flex items-center hover:bg-medical shadow-xl transition-all"><i
-                                class="fas fa-phone-alt mr-4 text-medical"></i> 021-34XXXXXX</a>
-                        <button onclick="openFlexiBot()"
-                            class="bg-medical text-white px-10 py-5 rounded-2xl font-bold text-lg flex items-center hover:bg-navy shadow-xl transition-all"><i
-                                class="fas fa-robot mr-4"></i> Talk to our AI</button>
-                    </div>
-                </div>
-                <div class="lg:w-1/2 w-full bg-white p-10 rounded-[3rem] shadow-xl border border-medical/5">
-                    <h3 class="text-navy font-extrabold text-2xl mb-8">Quick Callback</h3>
-                    <form class="space-y-6"
-                        onsubmit="event.preventDefault(); alert('Request sent! We will call you back shortly.');">
-                        <input id="client_name" name="client_name" type="text" placeholder="Full Name" required
-                            class="w-full bg-pearl border border-medical/10 px-6 py-4 rounded-2xl outline-none" />
-                        <input id="client_phone" name="client_phone" type="tel" placeholder="03XX-XXXXXXX" required
-                            class="w-full bg-pearl border border-medical/10 px-6 py-4 rounded-2xl outline-none" />
-                        <button
-                            class="w-full bg-navy text-white py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-medical transition-all">Submit
-                            Request</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+        <!-- Location Section -->
+        <section id="location" class="py-20 bg-white">
+                <div class="container mx-auto px-4 md:px-8 lg:px-12">
+                        <div class="bg-gradient-to-br from-primary/5 to-secondary/5 rounded-3xl p-8 md:p-12">
+                                <div class="flex flex-col lg:flex-row items-center gap-12">
+                                        <div class="lg:w-1/2">
+                                                <span
+                            class="inline-block bg-primary text-white font-semibold px-4 py-2 rounded-full mb-6">Visit
+                            Us</span>
+                                                <h2 class="font-display font-black text-3xl md:text-4xl mb-6">Convenient
+                            Location in Gulshan</h2>
+                                                <p class="text-lg text-dark mb-8">Gulshan-e-Iqbal, Block 10, Karachi</p>
+                                               
+                                                <div class="space-y-4 mb-10" id="landmarks-list">
+                                                        <!-- Landmarks will be loaded by JavaScript -->
+                                                    </div>
+                                               
+                                                <button onclick="openGoogleMaps()"
+                            class="btn-gradient text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center space-x-3">
+                                                        <i data-lucide="map-pin" class="w-5 h-5"></i>
+                                                        <span>Open in Google Maps</span>
+                                                    </button>
+                                            </div>
+                                       
+                                        <div class="lg:w-1/2">
+                                                <div class="bg-white rounded-2xl p-8 shadow-card">
+                                                        <div class="flex items-center space-x-4 mb-8">
+                                                                <div class="bg-primary p-4 rounded-xl">
+                                                                        <i data-lucide="tooth"
+                                        class="w-8 h-8 text-white"></i>
+                                                                    </div>
+                                                                <div>
+                                                                        <h3 class="font-display font-bold text-2xl">
+                                        Smile Care Dental</h3>
+                                                                        <p class="text-light">Gulshan Block 10</p>
+                                                                    </div>
+                                                            </div>
+                                                       
+                                                        <div class="space-y-6">
+                                                                <div class="flex items-center space-x-4">
+                                                                        <div
+                                        class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center">
+                                                                                <i data-lucide="clock"
+                                            class="w-5 h-5 text-primary"></i>
+                                                                            </div>
+                                                                        <div>
+                                                                                <p class="font-semibold text-dark">
+                                            Opening Hours</p>
+                                                                                <p class="text-light">Mon-Sat: 9AM-9PM
+                                        </p>
+                                                                                <p class="text-light">Sun: Emergency
+                                            Only</p>
+                                                                            </div>
+                                                                    </div>
+                                                               
+                                                                <div class="flex items-center space-x-4">
+                                                                        <div
+                                        class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center">
+                                                                                <i data-lucide="phone"
+                                            class="w-5 h-5 text-primary"></i>
+                                                                            </div>
+                                                                        <div>
+                                                                                <p class="font-semibold text-dark">
+                                            Emergency Line</p>
+                                                                                <p class="text-dark font-bold">
+                                            021-34XXXXXX</p>
+                                                                            </div>
+                                                                    </div>
+                                                            </div>
+                                                    </div>
+                                            </div>
+                                    </div>
+                            </div>
+                    </div>
+            </section>
 
-    <footer
-        class="bg-pearl pt-24 pb-12 border-t border-medical/10 text-center text-[10px] font-black uppercase tracking-widest text-navy/30">
-        <div class="container mx-auto px-4">
-            <p class="mb-4">© 2024 Smile Care Dental Clinic. Gulshan-e-Iqbal, Block 10, Karachi.</p>
-        </div>
-    </footer>
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-gradient-to-b from-neutral to-white">
+                <div class="container mx-auto px-4 md:px-8 lg:px-12">
+                        <div class="max-w-6xl mx-auto bg-white rounded-3xl shadow-deep overflow-hidden">
+                                <div class="md:flex">
+                                        <!-- Left Side -->
+                                        <div
+                        class="md:w-1/2 bg-gradient-to-br from-primary to-secondary p-12 text-white">
+                                                <div class="space-y-8">
+                                                        <div>
+                                                                <h2
+                                    class="font-display font-black text-3xl md:text-4xl mb-4">Ready for Your Visit?</h2>
+                                                                <p class="text-white/90">Book a consultation or talk to
+                                    our AI assistant to learn more about our services.</p>
+                                                            </div>
+                                                       
+                                                        <div class="space-y-6">
+                                                                <div class="flex items-center space-x-4">
+                                                                        <div
+                                        class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
+                                                                                <i data-lucide="calendar"
+                                            class="w-6 h-6"></i>
+                                                                            </div>
+                                                                        <div>
+                                                                                <p class="font-semibold">Same Day
+                                            Appointments</p>
+                                                                                <p class="text-sm text-white/80">
+                                            Available for emergencies</p>
+                                                                            </div>
+                                                                    </div>
+                                                               
+                                                                <div class="flex items-center space-x-4">
+                                                                        <div
+                                        class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
+                                                                                <i data-lucide="shield-check"
+                                            class="w-6 h-6"></i>
+                                                                            </div>
+                                                                        <div>
+                                                                                <p class="font-semibold">COVID-Safe
+                                            Protocols</p>
+                                                                                <p class="text-sm text-white/80">100%
+                                            sterilization guarantee</p>
+                                                                            </div>
+                                                                    </div>
+                                                            </div>
+                                                       
+                                                        <div class="pt-8">
+                                                                <button onclick="openFlexiBot()"
+                                    class="bg-white text-primary font-semibold px-8 py-4 rounded-xl hover:bg-gray-50 transition-all flex items-center space-x-3 w-full justify-center">
+                                                                        <i data-lucide="message-circle"
+                                        class="w-5 h-5"></i>
+                                                                        <span>Chat with AI Assistant</span>
+                                                                    </button>
+                                                            </div>
+                                                    </div>
+                                            </div>
+                                       
+                                        <!-- Right Side - Form -->
+                                        <div class="md:w-1/2 p-12">
+                                                <h3 class="font-display font-bold text-2xl mb-8">Book Your Appointment
+                        </h3>
+                                                <form class="space-y-6" id="appointment-form">
+                                                        <div>
+                                                                <label
+                                    class="block text-sm font-semibold text-dark mb-2">Full Name</label>
+                                                                <input type="text"                                      
+                                     class="w-full bg-neutral border border-gray-200 px-6 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                                                           placeholder="Enter your full name"          
+                                                                 required>
+                                                            </div>
+                                                       
+                                                        <div>
+                                                                <label
+                                    class="block text-sm font-semibold text-dark mb-2">Phone Number</label>
+                                                                <input type="tel"                                      
+                                     class="w-full bg-neutral border border-gray-200 px-6 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                                                           placeholder="03XX-XXXXXXX"                  
+                                                         required>
+                                                            </div>
+                                                       
+                                                        <div>
+                                                                <label
+                                    class="block text-sm font-semibold text-dark mb-2">Preferred Date</label>
+                                                                <input type="date"                                      
+                                     class="w-full bg-neutral border border-gray-200 px-6 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                                                           required>
+                                                            </div>
+                                                       
+                                                        <div>
+                                                                <label
+                                    class="block text-sm font-semibold text-dark mb-2">Service Required</label>
+                                                                <select
+                                    class="w-full bg-neutral border border-gray-200 px-6 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                                                        <option>General Checkup</option>
+                                                                        <option>Teeth Cleaning</option>
+                                                                        <option>Dental Implants</option>
+                                                                        <option>Braces/Orthodontics</option>
+                                                                        
+                                                                        <option>Emergency Care</option>
+                                                                        
+                                                                        </select>
+                                                                        
+                                                                        </div>
+                                                                        
+                                                                        
+                                                                        
+                                                                        <button type="submit"
+                                                                            class="w-full btn-gradient text-white font-semibold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all">
+                                                                        
+                                                                            Submit Appointment Request
+                                                                        
+                                                                        </button>
+                                                                        
+                                                                        </form>
+                                                                        
+                                                                        </div>
+                                                                        
+                                                                        </div>
+                                                                        
+                                                                        </div>
+                                                                        
+                                                                        </div>
+                                                                        
+                                                                        </section>
+                                                                        
+                                                                        
+                                                                        
+                                                                        <!-- Footer -->
+                                                                        
+                                                                        <footer class="bg-dark text-white py-12">
+                                                                        
+                                                                            <div class="container mx-auto px-4 md:px-8 lg:px-12">
+                                                                        
+                                                                                <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                                                                        
+                                                                                    <div class="space-y-4">
+                                                                        
+                                                                                        <div class="flex items-center space-x-3">
+                                                                        
+                                                                                            <div class="bg-primary p-3 rounded-xl">
+                                                                        
+                                                                                                <i data-lucide="tooth" class="w-6 h-6"></i>
+                                                                        
+                                                                                            </div>
+                                                                        
+                                                                                            <div>
+                                                                        
+                                                                                                <span class="font-display font-bold text-xl">Smile Care Dental</span>
+                                                                        
+                                                                                                <p class="text-sm text-gray-400">Premium Dental Clinic</p>
+                                                                        
+                                                                                            </div>
+                                                                        
+                                                                                        </div>
+                                                                        
+                                                                                        <p class="text-gray-400 max-w-md">From wedding-ready smiles to emergency pain relief, we provide expert
+                                                                                            dental care with 24/7 generator backup and valet parking.</p>
+                                                                        
+                                                                                    </div>
+                                                                        
+                                                                        
+                                                                        
+                                                                                    <div class="text-center md:text-right">
+                                                                        
+                                                                                        <p class="font-semibold mb-4">Quick Links</p>
+                                                                        
+                                                                                        <div class="flex flex-wrap justify-center md:justify-end gap-4 mb-6">
+                                                                        
+                                                                                            <a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a>
+                                                                        
+                                                                                            <a href="#services" class="text-gray-400 hover:text-white transition-colors">Services</a>
+                                                                        
+                                                                                            <a href="#team" class="text-gray-400 hover:text-white transition-colors">Team</a>
+                                                                        
+                                                                                            <a href="#location" class="text-gray-400 hover:text-white transition-colors">Location</a>
+                                                                        
+                                                                                        </div>
+                                                                        
+                                                                        
+                                                                        
+                                                                                        <div class="flex justify-center md:justify-end space-x-4">
+                                                                        
+                                                                                            <a href="#"
+                                                                                                class="w-10 h-10 bg-gray-800 rounded-xl flex items-center justify-center hover:bg-primary transition-colors">
+                                                                        
+                                                                                                <i data-lucide="facebook" class="w-5 h-5"></i>
+                                                                        
+                                                                                            </a>
+                                                                        
+                                                                                            <a href="#"
+                                                                                                class="w-10 h-10 bg-gray-800 rounded-xl flex items-center justify-center hover:bg-primary transition-colors">
+                                                                        
+                                                                                                <i data-lucide="instagram" class="w-5 h-5"></i>
+                                                                        
+                                                                                            </a>
+                                                                        
+                                                                                            <a href="#"
+                                                                                                class="w-10 h-10 bg-gray-800 rounded-xl flex items-center justify-center hover:bg-primary transition-colors">
+                                                                        
+                                                                                                <i data-lucide="twitter" class="w-5 h-5"></i>
+                                                                        
+                                                                                            </a>
+                                                                        
+                                                                                        </div>
+                                                                        
+                                                                                    </div>
+                                                                        
+                                                                                </div>
+                                                                        
+                                                                        
+                                                                        
+                                                                                <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+                                                                        
+                                                                                    <p>© 2024 Smile Care Dental Clinic. Gulshan-e-Iqbal, Block 10, Karachi. All rights reserved.</p>
+                                                                        
+                                                                                    <p class="mt-2">Karachi's premier dental care provider since 2009</p>
+                                                                        
+                                                                                </div>
+                                                                        
+                                                                            </div>
+                                                                        
+                                                                        </footer>
+                                                                        
+                                                                        
+                                                                        
+                                                                        <!-- Scripts -->
+                                                                        
+                                                                        <script src="script.js"></script>
+                                                                        
+                                                                        <script>
 
-    <script>
-        const CLINIC_DATA = {
-            services: [
-                { id: "scaling", title: "Pro-Scaling & Polishing", description: "Get rid of stubborn stains and plaque for a healthy, shiny smile.", priceRange: "PKR 3,500 - 5,000", icon: "fa-tooth", imageUrl: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=600" },
-                { id: "extraction", title: "Surgical Extractions", description: "Safe, painless removal of impacted wisdom teeth by our expert surgeon.", priceRange: "PKR 12,000 - 25,000", icon: "fa-syringe", imageUrl: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=600" },
-                { id: "ortho", title: "Metal & Ceramic Braces", description: "Comprehensive orthodontic treatment with flexible installment plans.", priceRange: "PKR 80,000 - 150,000", icon: "fa-grip-lines", imageUrl: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&q=80&w=600" }
-            ],
-            team: [
-                { id: "dr-sameer", name: "Dr. Sameer Ahmed", title: "Lead General Dentist", specialty: "General Dentistry & Aesthetics", shifts: "Mon - Sat (09:00 AM - 02:00 PM)", imageUrl: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=400" },
-                { id: "dr-alizeh", name: "Dr. Alizeh Shah", title: "Senior Orthodontist", specialty: "Braces & Invisalign", shifts: "Tue, Thu, Sat (04:00 PM - 09:00 PM)", imageUrl: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=400" },
-                { id: "dr-faraz", name: "Dr. Faraz Khan", title: "Consultant Oral Surgeon", specialty: "Wisdom Teeth & Implants", shifts: "Mon, Wed, Fri (05:00 PM - 10:00 PM)", imageUrl: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=400" },
-                { id: "dr-sarah", name: "Dr. Sarah Mansoor", title: "Pediatric Dentist", specialty: "Kids Dentistry", shifts: "Mon - Fri (10:00 AM - 01:00 PM) | Sun (By Appointment)", imageUrl: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&q=80&w=400" }
-            ],
-            amenities: [
-                { title: "Generator Backup", detail: "Uninterrupted procedures, no load-shedding impact", icon: "fa-bolt" },
-                { title: "Valet Parking", detail: "Professional staff to handle your vehicle", icon: "fa-car" },
-                { title: "RO Filtered Water", detail: "Pure drinking water for all patients", icon: "fa-faucet-drip" },
-                { title: "Separate Prayer Area", detail: "Dedicated space for Salah", icon: "fa-hands-praying" },
-                { title: "Kid-Friendly Zone", detail: "Games and toys for our little champions", icon: "fa-child-reaching" }
-            ],
-            landmarks: ["Near Lucky One Mall", "Opposite Millenium Mall", "Main Rashid Minhas Road"]
-        };
+                                                                            // Initialize Lucide Icons
 
-        // Render Services
-        const servicesGrid = document.getElementById('services-grid');
-        CLINIC_DATA.services.forEach(s => {
-            servicesGrid.innerHTML += `
-                <div class="group rounded-[2.5rem] bg-pearl border border-medical/5 hover:bg-white hover:shadow-2xl transition-all duration-500 overflow-hidden">
-                    <div class="h-56 overflow-hidden relative">
-                        <img src="${s.imageUrl}" alt="${s.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm w-12 h-12 rounded-xl flex items-center justify-center text-medical shadow-sm"><i class="fas ${s.icon} text-xl"></i></div>
-                    </div>
-                    <div class="p-10">
-                        <h4 class="text-2xl font-extrabold text-navy mb-4">${s.title}</h4>
-                        <p class="text-navy/50 font-medium mb-8 leading-relaxed">${s.description}</p>
-                        <div class="pt-8 border-t border-medical/10 flex items-center justify-between">
-                            <div><p class="text-[10px] font-black text-navy/30 uppercase tracking-widest mb-1">Starts From</p><p class="text-xl font-extrabold text-navy">${s.priceRange.split('-')[0]}</p></div>
-                            <button class="w-12 h-12 bg-navy/5 text-navy rounded-full flex items-center justify-center hover:bg-medical hover:text-white transition-all"><i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
-                </div>
-            `;
-        });
+                                                                            lucide.createIcons();
 
-        // Render Team
-        const teamGrid = document.getElementById('team-grid');
-        CLINIC_DATA.team.forEach(doc => {
-            teamGrid.innerHTML += `
-                <div class="group bg-white rounded-[3rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-medical/5 flex flex-col">
-                    <div class="relative h-80 overflow-hidden flex-shrink-0">
-                        <img src="${doc.imageUrl}" alt="${doc.name}" class="w-full h-full object-cover group-hover:scale-105 transition-all" />
-                    </div>
-                    <div class="p-8 text-center sm:text-left flex flex-col flex-grow">
-                        <p class="text-medical text-[10px] font-black uppercase tracking-widest mb-2">${doc.title}</p>
-                        <h4 class="text-2xl font-extrabold text-navy mb-2">${doc.name}</h4>
-                        <p class="text-navy/40 text-xs font-bold uppercase mb-6">${doc.specialty}</p>
-                        <div class="flex items-center space-x-3 text-[11px] bg-pearl p-3 rounded-2xl justify-center sm:justify-start min-h-[60px] mb-4">
-                            <i class="far fa-clock text-medical flex-shrink-0"></i>
-                            <span class="text-navy/70 font-bold leading-tight">${doc.shifts}</span>
-                        </div>
-                        <button class="w-full mt-auto py-4 rounded-2xl bg-white border-2 border-navy/5 text-navy font-black text-xs uppercase tracking-widest hover:bg-navy hover:text-white transition-all">Book the Slot</button>
-                    </div>
-                </div>
-            `;
-        });
 
-        // Render Amenities
-        const amenitiesList = document.getElementById('amenities-list');
-        CLINIC_DATA.amenities.forEach(a => {
-            amenitiesList.innerHTML += `
-                <div class="flex items-start space-x-6 p-6 rounded-[2rem] bg-pearl border border-medical/5 group hover:bg-medical/5 transition-all">
-                    <div class="w-14 h-14 bg-white text-medical rounded-2xl flex items-center justify-center shadow-sm group-hover:bg-medical group-hover:text-white transition-all"><i class="fas ${a.icon} text-xl"></i></div>
-                    <div><p class="text-navy font-extrabold text-lg">${a.title}</p><p class="text-navy/40 text-sm font-medium">${a.detail}</p></div>
-                </div>
-            `;
-        });
 
-        // Render Landmarks
-        const landmarksList = document.getElementById('landmarks-list');
-        CLINIC_DATA.landmarks.forEach(l => {
-            landmarksList.innerHTML += `
-                <div class="flex items-center space-x-4 text-white/40 justify-center lg:justify-start">
-                    <div class="w-2 h-2 rounded-full bg-medical"></div>
-                    <span>${l}</span>
-                </div>
-            `;
-        });
+                                                                            // Initialize mobile menu
 
-        // --- UI Logic ---
-        function openFlexiBot() {
-            if (window.FlexiBot && typeof window.FlexiBot.toggle === 'function') {
-                window.FlexiBot.toggle();
-            } else {
-                const bubble = document.getElementById('flexibot-bubble') || document.querySelector('[class*="flexibot"]');
-                if (bubble) bubble.click();
-            }
-        }
+                                                                            document.getElementById('mobile-menu-btn').addEventListener('click', function () {
 
-        function openGoogleMaps() {
-            window.open('https://www.google.com/maps/search/Gulshan-e-Iqbal+Block+10+Karachi+Pakistan', '_blank');
-        }
+                                                                                document.getElementById('mobile-menu').classList.add('open');
 
-        // Scroll effect
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 20) {
-                nav.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-sm', 'py-3');
-                nav.classList.remove('bg-transparent', 'py-6');
-            } else {
-                nav.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-sm', 'py-3');
-                nav.classList.add('bg-transparent', 'py-6');
-            }
-        });
+                                                                            });
 
-        // Smooth scroll for navbar links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
 
-    <script src="https://flexibot-backend.onrender.com/embed.js"
-        data-client-id="01509eb9-c36b-432c-8715-c5621bbe9388"></script>
-</body>
 
-</html>
+                                                                            document.getElementById('close-menu').addEventListener('click', function () {
+
+                                                                                document.getElementById('mobile-menu').classList.remove('open');
+
+                                                                            });
+
+
+
+                                                                            // Close mobile menu when clicking links
+
+                                                                            document.querySelectorAll('#mobile-menu a').forEach(link => {
+
+                                                                                link.addEventListener('click', function () {
+
+                                                                                    document.getElementById('mobile-menu').classList.remove('open');
+
+                                                                                });
+
+                                                                            });
+
+
+
+                                                                            // Form submission
+
+                                                                            document.getElementById('appointment-form').addEventListener('submit', function (e) {
+
+                                                                                e.preventDefault();
+
+                                                                                alert('Thank you! Your appointment request has been submitted. We will call you shortly to confirm.');
+
+                                                                                this.reset();
+
+                                                                            });
+
+                                                                        </script>
+                                                                        <script src="https://flexibot-backend.onrender.com/embed.js" data-client-id="01509eb9-c36b-432c-8715-c5621bbe9388"></script>
+                                                                        </body>
+                                                                        
+                                                                        </html>
