@@ -37,15 +37,15 @@ const CLINIC_DATA = {
                                                                                     imageUrl: "http://static.photos/white/640x360/101",
                                                                                     features: ["Instant Results", "Safe Process", "Long Lasting"]
                                                                                 },
-                                                                                {
-                                                                                    id: "implants",
-                                                                                    title: "Dental Implants",
-                                                                                    description: "Permanent tooth replacement solutions that look, feel, and function like natural teeth.",
-                                                                                    priceRange: "PKR 50,000 - 120,000",
-                                                                                    icon: "anchor",
-                                                                                    imageUrl: "http://static.photos/medical/640x360/202",
-                                                                                    features: ["Lifetime Warranty", "Expert Surgeon", "Digital Planning"]
-                                                                                },
+                                                                                // Locate this section in your CLINIC_DATA and update it:
+{ 
+    id: "implants", 
+    title: "Premium Dental Implants", // <-- Ensure ONLY ONE title key exists here
+    description: "Permanent tooth replacement solutions.", 
+    priceRange: "PKR 50,000", 
+    icon: "anchor", 
+    imageUrl: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&q=80&w=600" // <-- Real URL
+},
                                                                                 {
                                                                                     id: "root-canal",
                                                                                     title: "Root Canal Treatment",
@@ -292,9 +292,10 @@ const CLINIC_DATA = {
                                                                         }
                                                                         
                                                                         // Google Maps Function
-                                                                        function openGoogleMaps() {
-                                                                            window.open('https://www.google.com/maps/search/Gulshan-e-Iqbal+Block+10+Karachi+Pakistan', '_blank');
-                                                                        }
+                                                                        window.open(
+                                                                          "https://www.google.com/maps/search/Dental+Clinic+Gulshan+Karachi",
+                                                                          "_blank",
+                                                                        );
                                                                         
                                                                         // FlexiBot Integration
                                                                         function openFlexiBot() {
