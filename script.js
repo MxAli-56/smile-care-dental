@@ -49,9 +49,8 @@ const CLINIC_DATA = {
         "Professional teeth whitening treatments that deliver dramatic results in just one session.",
       priceRange: "PKR 8,000 - 15,000",
       icon: "sun",
-      imageUrl:
-        "https://images.unsplash.com/photo-1606811919082-70981ad76a0d?q=80&w=800&auto=format&fit=crop",
-      features: ["Instant Results", "Safe Process", "Long Lasting"],
+      imageUrl: "https://images.unsplash.com/photo-1606811919082-70981ad76a0d?auto=format&fit=crop&w=800&q=80",
+        features: ["Instant Results", "Safe Process", "Long Lasting"],
     },
     {
       id: "implants",
@@ -59,9 +58,8 @@ const CLINIC_DATA = {
       description: "Permanent tooth replacement solutions.",
       priceRange: "PKR 50,000",
       icon: "anchor",
-      imageUrl:
-        "https://images.unsplash.com/photo-1609840112855-9ab5ad8f67e4?q=80&w=800&auto=format&fit=crop",
-      features: ["Titanium Implants", "3D Planning", "Long-Term Stability"],
+      imageUrl: "https://images.unsplash.com/photo-1609840112855-9ab5ad8f67e4?auto=format&fit=crop&w=800&q=80",
+        features: ["Titanium Implants", "3D Planning", "Long-Term Stability"],
     },
     {
       id: "root-canal",
