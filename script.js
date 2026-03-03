@@ -49,8 +49,9 @@ const CLINIC_DATA = {
         "Professional teeth whitening treatments that deliver dramatic results in just one session.",
       priceRange: "PKR 8,000 - 15,000",
       icon: "sun",
-      imageUrl: "https://images.unsplash.com/photo-1606811919082-70981ad76a0d?auto=format&fit=crop&w=800&q=80",
-        features: ["Instant Results", "Safe Process", "Long Lasting"],
+      imageUrl:
+        "https://images.unsplash.com/photo-1473232117216-c950d4ef2e14?auto=format&fit=crop&q=80&w=600",
+      features: ["Instant Results", "Safe Process", "Long Lasting"],
     },
     {
       id: "implants",
@@ -58,8 +59,9 @@ const CLINIC_DATA = {
       description: "Permanent tooth replacement solutions.",
       priceRange: "PKR 50,000",
       icon: "anchor",
-      imageUrl: "https://images.unsplash.com/photo-1609840112855-9ab5ad8f67e4?auto=format&fit=crop&w=800&q=80",
-        features: ["Titanium Implants", "3D Planning", "Long-Term Stability"],
+      imageUrl:
+        "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=600",
+      features: ["Titanium Implants", "3D Planning", "Long-Term Stability"],
     },
     {
       id: "root-canal",
@@ -69,7 +71,7 @@ const CLINIC_DATA = {
       priceRange: "PKR 7,000 - 12,000",
       icon: "droplet",
       imageUrl:
-        "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=600",
       features: ["Pain-Free", "Single Visit", "Microscopic Precision"],
     },
   ],
