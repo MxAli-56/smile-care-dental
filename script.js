@@ -207,7 +207,7 @@ function renderServices() {
             <span class="inline-block bg-primary/10 text-primary text-xs font-semibold px-3 py-1.5 rounded-full mr-2 mb-2">
               ${feature}
             </span>
-          `
+          `,
                   )
                   .join("")
               : ""
@@ -217,7 +217,7 @@ function renderServices() {
           <div>
             <p class="text-xs font-bold text-light uppercase tracking-wider mb-1">Starts From</p>
             <p class="font-display font-bold text-2xl text-primary">
-              ${service.priceRange.split("-")[0].trim()}
+              ${service.priceRange.includes("-") ? service.priceRange.split("-")[0].trim() : service.priceRange}
             </p>
           </div>
           <button
