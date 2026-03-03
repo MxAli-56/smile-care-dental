@@ -388,12 +388,25 @@ function openGoogleMaps() {
 
 // FlexiBot integration - Clean Unified Version
 window.openFlexiBot = function () {
-  // Find the bubble that is already working and click it
-  const bubble = document.querySelector(".flexibot-bubble");
-  if (bubble) {
-    bubble.click();
+  console.log("[FlexiBot] Clicking the CTA...");
+
+  // Target the specific class you found in the Inspect tool
+  const cta = document.querySelector(".flexibot-cta");
+
+  if (cta) {
+    cta.click();
+    console.log("[FlexiBot] CTA clicked successfully.");
   } else {
-    console.error("FlexiBot bubble not found. Is the script loaded?");
+    // If CTA isn't there, try clicking the parent container/svg
+    const bubbleFallback =
+      document.querySelector('div[style*="position: fixed"]') ||
+      document.querySelector('svg path[d*="M21 15"]')?.closest("div");
+
+    if (bubbleFallback) {
+      bubbleFallback.click();
+    } else {
+      console.error("[FlexiBot] Could not find the chat trigger.");
+    }
   }
 };
 
