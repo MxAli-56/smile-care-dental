@@ -387,21 +387,13 @@ function openGoogleMaps() {
 }
 
 // FlexiBot integration - Clean Unified Version
-window.openFlexiBot = function() {
-  console.log('[FlexiBot] Attempting to open...');
-
-  // 1. Try Kimi's new Global API first (Professional way)
-  if (window.FlexiBot && typeof window.FlexiBot.open === 'function') {
-    window.FlexiBot.open();
-    return;
-  }
-
-  // 2. Fallback: Click the bubble icon (The "Works Every Time" way)
-  const bubble = document.querySelector('.flexibot-bubble') || document.querySelector('#flexibot-bubble');
+window.openFlexiBot = function () {
+  // Find the bubble that is already working and click it
+  const bubble = document.querySelector(".flexibot-bubble");
   if (bubble) {
     bubble.click();
   } else {
-    console.error('[FlexiBot] Chat elements not found on page.');
+    console.error("FlexiBot bubble not found. Is the script loaded?");
   }
 };
 
