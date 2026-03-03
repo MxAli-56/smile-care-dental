@@ -631,4 +631,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
   console.log("Smile Care Dental Clinic website initialized successfully!");
 });
-
