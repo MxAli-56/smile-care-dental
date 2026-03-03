@@ -71,7 +71,7 @@ const CLINIC_DATA = {
       priceRange: "PKR 7,000 - 12,000",
       icon: "droplet",
       imageUrl:
-        "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=600",
+        "https://images.unsplash.com/photo-1600170311833-c2cf5280ce49?auto=format&fit=crop&q=80&w=600",
       features: ["Pain-Free", "Single Visit", "Microscopic Precision"],
     },
   ],
