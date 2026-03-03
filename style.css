@@ -347,3 +347,14 @@ img {
 .card-hover:hover {
     transform: translateY(-10px);
 }
+
+/* Better spacing for the Amenities items */
+#amenities-list .flex {
+    margin-bottom: 1rem; /* Forces space between the white boxes */
+}
+
+/* Ensure images always fill their containers without distortion */
+#facilities img {
+    object-fit: cover;
+    object-position: center;
+}
