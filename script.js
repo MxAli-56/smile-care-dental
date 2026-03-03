@@ -374,27 +374,30 @@ function setupSmoothScroll() {
 
 // Open Google Maps in new tab
 function openGoogleMaps() {
-  window.open(
-    "https://www.google.com/maps/search/Dental+Clinic+Gulshan+Karachi",
-    "_blank"
-  );
+  // Direct link to Block 10, Gulshan-e-Iqbal, Karachi
+  const mapUrl =
+    "https://www.google.com/maps/search/Smile+Care+Dental+Clinic+Block+10+Gulshan-e-Iqbal+Karachi";
+  window.open(mapUrl, "_blank");
 }
 
 // FlexiBot integration
 function openFlexiBot() {
-  if (window.FlexiBot && typeof window.FlexiBot.toggle === "function") {
-    window.FlexiBot.toggle();
+  // 1. Look for the FlexiBot element
+  const flexiBot =
+    document.getElementById("flexibot") ||
+    document.getElementById("chatbot-container");
+
+  if (flexiBot) {
+    // 2. Remove 'hidden' class or set display to block
+    flexiBot.classList.remove("hidden");
+    flexiBot.style.display = "block";
+
+    // 3. Scroll to it if it's at the bottom of the page
+    flexiBot.scrollIntoView({ behavior: "smooth" });
   } else {
-    const bubble =
-      document.getElementById("flexibot-bubble") ||
-      document.querySelector('[class*="flexibot"]');
-    if (bubble) {
-      bubble.click();
-    } else {
-      alert(
-        "AI Assistant is currently unavailable. Please call us directly at 021-34XXXXXX"
-      );
-    }
+    console.error("FlexiBot element not found in HTML!");
+    // Fallback: If the bot is an external script (like a widget),
+    // it usually has its own toggle command, e.g., window.FlexiBot.open();
   }
 }
 
