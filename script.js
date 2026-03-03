@@ -388,22 +388,86 @@ function openGoogleMaps() {
 
 // FlexiBot integration
 function openFlexiBot() {
-  // 1. Look for the FlexiBot element
-  const flexiBot =
-    document.getElementById("flexibot") ||
-    document.getElementById("chatbot-container");
+  // 1. Look for the FlexiBot chat window and bubble button
+  const chatWindow = document.querySelector(".flexibot-window");
+  const chatButton = document.querySelector(".flexibot-bubble");
 
-  if (flexiBot) {
-    // 2. Remove 'hidden' class or set display to block
-    flexiBot.classList.remove("hidden");
-    flexiBot.style.display = "block";
+  if (chatWindow) {
+    // 2. Show the chat window by setting display to flex (as per embed.js logic)
+    chatWindow.style.display = "flex";
+    chatWindow.style.flexDirection = "column";
 
-    // 3. Scroll to it if it's at the bottom of the page
-    flexiBot.scrollIntoView({ behavior: "smooth" });
+    // 3. Hide the bubble button while chat is open
+    if (chatButton) {
+      chatButton.style.display = "none";
+    }
+
+    // 4. Focus the input field for immediate typing
+    const input = document.getElementById("flexibot-input");
+    if (input) {
+      setTimeout(() => {
+        try {
+          input.focus();
+        } catch (e) {}
+      }, 50);
+    }
+
+    // 5. Scroll messages to bottom
+    const messages = document.getElementById("flexibot-messages");
+    if (messages) {
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    // 6. If chat is empty (first open), trigger the greeting
+    if (messages && messages.children.length === 0) {
+      // Dispatch a custom event that embed.js can listen for
+      window.dispatchEvent(new CustomEvent('flexibot:opened'));
+    }
+
   } else {
-    console.error("FlexiBot element not found in HTML!");
-    // Fallback: If the bot is an external script (like a widget),
-    // it usually has its own toggle command, e.g., window.FlexiBot.open();
+    console.error(
+      "FlexiBot chat window not found! Make sure the embed.js script is loaded before calling openFlexiBot()."
+    );
+  }
+}
+
+/**
+ * Optional: Close FlexiBot programmatically
+ * Useful if you need a custom close button in your UI
+ */
+function closeFlexiBot() {
+  const chatWindow = document.querySelector(".flexibot-window");
+  const chatButton = document.querySelector(".flexibot-bubble");
+
+  if (chatWindow) {
+    chatWindow.style.display = "none";
+  }
+
+  if (chatButton) {
+    chatButton.style.display = "flex";
+  }
+
+  // Remove focus from input
+  const input = document.getElementById("flexibot-input");
+  if (input) input.blur();
+}
+
+/**
+ * Optional: Toggle FlexiBot open/closed state
+ * Can be used as an alternative to openFlexiBot if you want toggle behavior
+ */
+function toggleFlexiBot() {
+  const chatWindow = document.querySelector(".flexibot-window");
+
+  if (!chatWindow) {
+    console.error("FlexiBot not initialized yet.");
+    return;
+  }
+
+  if (!chatWindow.style.display || chatWindow.style.display === "none") {
+    openFlexiBot();
+  } else {
+    closeFlexiBot();
   }
 }
 
