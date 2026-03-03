@@ -386,38 +386,6 @@ function openGoogleMaps() {
   window.open(mapUrl, "_blank");
 }
 
-// FlexiBot integration - Clean Unified Version
-window.openFlexiBot = function () {
-  console.log("[FlexiBot] Clicking the CTA...");
-
-  // Target the specific class you found in the Inspect tool
-  const cta = document.querySelector(".flexibot-cta");
-
-  if (cta) {
-    cta.click();
-    console.log("[FlexiBot] CTA clicked successfully.");
-  } else {
-    // If CTA isn't there, try clicking the parent container/svg
-    const bubbleFallback =
-      document.querySelector('div[style*="position: fixed"]') ||
-      document.querySelector('svg path[d*="M21 15"]')?.closest("div");
-
-    if (bubbleFallback) {
-      bubbleFallback.click();
-    } else {
-      console.error("[FlexiBot] Could not find the chat trigger.");
-    }
-  }
-};
-
-window.closeFlexiBot = function() {
-  if (window.FlexiBot && typeof window.FlexiBot.close === 'function') {
-    window.FlexiBot.close();
-  } else {
-    const chatWindow = document.querySelector('.flexibot-window');
-    if (chatWindow) chatWindow.style.display = 'none';
-  }
-};
 
 // Intersection Observer for fade-in-up animation
 function setupScrollAnimations() {
