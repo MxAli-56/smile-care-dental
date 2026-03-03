@@ -375,8 +375,7 @@ function setupSmoothScroll() {
 // Open Google Maps in new tab
 function openGoogleMaps() {
   // Direct link to Block 10, Gulshan-e-Iqbal, Karachi
-  const mapUrl =
-    "https://www.google.com/maps/search/Smile+Care+Dental+Clinic+Block+10+Gulshan-e-Iqbal+Karachi";
+  const mapUrl = "https://maps.app.goo.gl/8W3C4m7hP4FqFWNa8";
   window.open(mapUrl, "_blank");
 }
 
