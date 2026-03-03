@@ -248,6 +248,11 @@ function renderTeam() {
     const doctorCard = document.createElement("div");
     doctorCard.className =
       "bg-white rounded-3xl shadow-card card-hover overflow-hidden border border-gray-100";
+
+    // 1. PLACE THE LOGIC HERE
+    const nameMargin = doctor.name.includes("Alizeh") ? "mb-7" : "mb-2";
+
+    // 2. USE THE VARIABLE IN THE TEMPLATE LITERAL BELOW
     doctorCard.innerHTML = `
       <div class="relative h-80 overflow-hidden">
         <img
@@ -265,7 +270,9 @@ function renderTeam() {
       </div>
       <div class="p-8">
         <p class="text-primary text-sm font-semibold uppercase tracking-wider mb-2">${doctor.title}</p>
-        <h4 class="font-display font-bold text-xl mb-2">${doctor.name}</h4>
+        
+        <h4 class="font-display font-bold text-xl ${nameMargin}">${doctor.name}</h4>
+        
         <p class="text-light text-sm font-semibold uppercase mb-4">${doctor.specialty}</p>
         <div class="flex items-center space-x-3 text-sm bg-neutral p-4 rounded-xl mb-6">
           <i data-lucide="graduation-cap" class="w-4 h-4 text-primary flex-shrink-0"></i>
