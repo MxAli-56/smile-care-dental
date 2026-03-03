@@ -358,3 +358,32 @@ img {
     object-fit: cover;
     object-position: center;
 }
+
+/* ============================================
+   FlexiBot Integration - Z-Index Overrides
+   Ensures chatbot appears above all content
+   ============================================ */
+
+/* Ensure chat window is above everything */
+.flexibot-window {
+    z-index: 2147483647 !important; /* Maximum z-index */
+}
+
+/* Ensure bubble button is above everything */
+.flexibot-bubble {
+    z-index: 2147483647 !important;
+}
+
+/* Fix for any parent containers that might clip the chatbot */
+#contact,
+section,
+.container {
+    position: relative;
+    z-index: auto;
+}
+
+/* Ensure the chat window is visible when displayed */
+.flexibot-window[style*="flex"] {
+    visibility: visible !important;
+    opacity: 1 !important;
+}

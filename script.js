@@ -386,90 +386,215 @@ function openGoogleMaps() {
   window.open(mapUrl, "_blank");
 }
 
-// FlexiBot integration
-function openFlexiBot() {
-  // 1. Look for the FlexiBot chat window and bubble button
-  const chatWindow = document.querySelector(".flexibot-window");
-  const chatButton = document.querySelector(".flexibot-bubble");
+// FlexiBot integration - Robust version with polling for dynamic injection
+(function() {
+  'use strict';
 
-  if (chatWindow) {
-    // 2. Show the chat window by setting display to flex (as per embed.js logic)
-    chatWindow.style.display = "flex";
-    chatWindow.style.flexDirection = "column";
+  // Global state
+  let _flexibotReady = false;
+  let _maxRetries = 50; // 5 seconds total (50 * 100ms)
+  let _retryCount = 0;
 
-    // 3. Hide the bubble button while chat is open
+  /**
+   * Poll for FlexiBot elements to be injected by embed.js
+   * This handles the race condition where user clicks before script loads
+   */
+  function pollForFlexiBot(callback) {
+    const chatWindow = document.querySelector('.flexibot-window');
+    const chatButton = document.querySelector('.flexibot-bubble');
+
+    if (chatWindow && chatButton) {
+      _flexibotReady = true;
+      callback(null, { chatWindow, chatButton });
+      return;
+    }
+
+    if (_retryCount < _maxRetries) {
+      _retryCount++;
+      setTimeout(() => pollForFlexiBot(callback), 100);
+    } else {
+      callback(new Error('FlexiBot elements not found after 5 seconds. Make sure embed.js is loaded.'));
+    }
+  }
+
+  /**
+   * Send initial greeting message (replicates embed.js sendGreeting behavior)
+   * This is needed because sendGreeting is scoped inside embed.js
+   */
+  function sendInitialGreeting(messagesContainer, botName) {
+    if (!messagesContainer || messagesContainer.children.length > 0) return;
+
+    const name = botName || 'our clinic';
+    const greetingText = `Hi there! Welcome to ${name}. How can I help you today?`;
+
+    // Create bot message wrapper
+    const wrapper = document.createElement('div');
+    wrapper.className = 'bot-message-wrapper';
+    wrapper.innerHTML = `
+      <div class="bot-avatar-small">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;">
+          <path d="M7 2C4 2 3 5 3 8C3 11 4 12 5 13C5 17 6 22 9 22C10.5 22 11 21 12 21C13 21 13.5 22 15 22C18 22 19 17 19 13C20 12 21 11 21 8C21 5 20 2 17 2H7Z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="message-bubble bot-bubble">${greetingText}</div>
+    `;
+
+    messagesContainer.appendChild(wrapper);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+    // Add suggestion buttons
+    const suggestions = [
+      "Which dentist is available today?",
+      "What services do you offer?",
+      "I want to book an appointment"
+    ];
+
+    const buttonContainer = document.createElement('div');
+    buttonContainer.className = 'suggestion-container';
+
+    suggestions.forEach((text) => {
+      const btn = document.createElement('button');
+      btn.className = 'suggestion-btn';
+      btn.textContent = text;
+      btn.onclick = (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        const inputField = document.getElementById('flexibot-input');
+        if (inputField) {
+          inputField.value = text;
+          // Trigger send by simulating Enter key
+          const enterEvent = new KeyboardEvent('keydown', { key: 'Enter' });
+          inputField.dispatchEvent(enterEvent);
+          buttonContainer.remove();
+        }
+      };
+      buttonContainer.appendChild(btn);
+    });
+
+    messagesContainer.appendChild(buttonContainer);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+
+  /**
+   * Main function to open FlexiBot chat
+   * Uses global API if available, falls back to DOM manipulation
+   */
+  window.openFlexiBot = function openFlexiBot() {
+    console.log('[FlexiBot] Opening chat...');
+
+    // METHOD 1: Use global API if available (preferred)
+    if (window.FlexiBot && typeof window.FlexiBot.open === 'function') {
+      window.FlexiBot.open();
+      console.log('[FlexiBot] Opened via global API');
+      return;
+    }
+
+    // METHOD 2: Fallback to DOM polling
+    pollForFlexiBot((err, elements) => {
+      if (err) {
+        console.error('[FlexiBot]', err.message);
+        return;
+      }
+
+      const { chatWindow, chatButton } = elements;
+
+      // Force show chat window with high z-index
+      chatWindow.style.display = 'flex';
+      chatWindow.style.flexDirection = 'column';
+      chatWindow.style.zIndex = '2147483647'; // Max z-index to ensure visibility
+
+      // Hide the bubble button
+      chatButton.style.display = 'none';
+
+      // Get references to internal elements
+      const messages = document.getElementById('flexibot-messages');
+      const input = document.getElementById('flexibot-input');
+
+      // Scroll to bottom
+      if (messages) {
+        messages.scrollTop = messages.scrollHeight;
+
+        // Send greeting if first time opening
+        if (messages.children.length === 0) {
+          setTimeout(() => {
+            sendInitialGreeting(messages, 'Smile Care Dental');
+          }, 300);
+        }
+      }
+
+      // Focus input after transition
+      if (input) {
+        setTimeout(() => {
+          try {
+            input.focus();
+          } catch (e) {
+            // Silent fail for focus
+          }
+        }, 100);
+      }
+
+      console.log('[FlexiBot] Chat opened successfully');
+    });
+  };
+
+  /**
+   * Close FlexiBot chat programmatically
+   */
+  window.closeFlexiBot = function closeFlexiBot() {
+    // Use global API if available
+    if (window.FlexiBot && typeof window.FlexiBot.close === 'function') {
+      window.FlexiBot.close();
+      return;
+    }
+
+    // Fallback to DOM manipulation
+    const chatWindow = document.querySelector('.flexibot-window');
+    const chatButton = document.querySelector('.flexibot-bubble');
+
+    if (chatWindow) {
+      chatWindow.style.display = 'none';
+    }
+
     if (chatButton) {
-      chatButton.style.display = "none";
+      chatButton.style.display = 'flex';
     }
 
-    // 4. Focus the input field for immediate typing
-    const input = document.getElementById("flexibot-input");
-    if (input) {
-      setTimeout(() => {
-        try {
-          input.focus();
-        } catch (e) {}
-      }, 50);
+    const input = document.getElementById('flexibot-input');
+    if (input) input.blur();
+  };
+
+  /**
+   * Toggle FlexiBot open/closed
+   */
+  window.toggleFlexiBot = function toggleFlexiBot() {
+    // Use global API if available
+    if (window.FlexiBot && typeof window.FlexiBot.toggle === 'function') {
+      window.FlexiBot.toggle();
+      return;
     }
 
-    // 5. Scroll messages to bottom
-    const messages = document.getElementById("flexibot-messages");
-    if (messages) {
-      messages.scrollTop = messages.scrollHeight;
+    // Fallback to DOM manipulation
+    const chatWindow = document.querySelector('.flexibot-window');
+
+    if (!chatWindow) {
+      window.openFlexiBot();
+      return;
     }
 
-    // 6. If chat is empty (first open), trigger the greeting
-    if (messages && messages.children.length === 0) {
-      // Dispatch a custom event that embed.js can listen for
-      window.dispatchEvent(new CustomEvent('flexibot:opened'));
+    const isOpen = chatWindow.style.display === 'flex';
+    if (isOpen) {
+      window.closeFlexiBot();
+    } else {
+      window.openFlexiBot();
     }
+  };
 
-  } else {
-    console.error(
-      "FlexiBot chat window not found! Make sure the embed.js script is loaded before calling openFlexiBot()."
-    );
-  }
-}
-
-/**
- * Optional: Close FlexiBot programmatically
- * Useful if you need a custom close button in your UI
- */
-function closeFlexiBot() {
-  const chatWindow = document.querySelector(".flexibot-window");
-  const chatButton = document.querySelector(".flexibot-bubble");
-
-  if (chatWindow) {
-    chatWindow.style.display = "none";
-  }
-
-  if (chatButton) {
-    chatButton.style.display = "flex";
-  }
-
-  // Remove focus from input
-  const input = document.getElementById("flexibot-input");
-  if (input) input.blur();
-}
-
-/**
- * Optional: Toggle FlexiBot open/closed state
- * Can be used as an alternative to openFlexiBot if you want toggle behavior
- */
-function toggleFlexiBot() {
-  const chatWindow = document.querySelector(".flexibot-window");
-
-  if (!chatWindow) {
-    console.error("FlexiBot not initialized yet.");
-    return;
-  }
-
-  if (!chatWindow.style.display || chatWindow.style.display === "none") {
-    openFlexiBot();
-  } else {
-    closeFlexiBot();
-  }
-}
+  // Listen for embed.js initialization complete
+  window.addEventListener('flexibot:ready', () => {
+    _flexibotReady = true;
+    console.log('[FlexiBot] Ready event received');
+  });
+})();
 
 // Intersection Observer for fade-in-up animation
 function setupScrollAnimations() {
