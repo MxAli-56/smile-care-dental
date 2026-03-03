@@ -192,7 +192,7 @@ function renderServices() {
           loading="lazy"
         >
         <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm w-12 h-12 rounded-xl flex items-center justify-center shadow-sm">
-          <i data-lucide="${service.icon}" class="w-6 h-6 text-primary"></i>
+          <i data-lucide="${service.icon || `sparkles`}" class="w-6 h-6 text-primary"></i>
         </div>
       </div>
       <div class="p-8">
